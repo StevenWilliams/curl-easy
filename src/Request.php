@@ -21,19 +21,26 @@ class Request extends EventDispatcher implements RequestInterface
      */
     protected $options = null;
 
+    protected $data = null;
+    
     /**
      * Create new cURL handle
      *
      * @param string $url The URL to fetch.
      */
-    public function __construct($url = null)
+    public function __construct($url = null, $data=null)
     {
         if ($url !== null) {
             $this->getOptions()->set(CURLOPT_URL, $url);
         }
         $this->ch = curl_init();
+        $this->data = data;
     }
 
+    public function getData() {
+        return $this->data;
+    }
+    
     /**
      * Closes cURL resource and frees the memory.
      * It is neccessary when you make a lot of requests
