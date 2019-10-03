@@ -34,7 +34,7 @@ class Request extends EventDispatcher implements RequestInterface
             $this->getOptions()->set(CURLOPT_URL, $url);
         }
         $this->ch = curl_init();
-        $this->data = data;
+        $this->data = $data;
     }
 
     public function getData() {
